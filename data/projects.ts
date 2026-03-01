@@ -1,0 +1,251 @@
+import { billwardImg } from "./assets";
+
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  longDescription?: string;
+  technologies: string[];
+  achievements: string[];
+  images: string[];
+  github?: string;
+  liveUrl?: string;
+  featured: boolean;
+}
+
+export const projects: Project[] = [
+  {
+    id: "slack-clone",
+    title: "Slack Clone – Real-Time Collaboration Platform",
+    description:
+      "A full-stack real-time collaboration platform with workspaces, channels, private messaging, subscriptions, and admin controls.",
+    longDescription:
+      "Built a production-style Slack-like application enabling teams to create workspaces, manage channels, and communicate in real time. Implemented role-based access control, subscription billing, AI-assisted messaging, and a scalable backend with WebSockets and Redis-backed job queues. Designed for performance, responsiveness, and clean system architecture.",
+    technologies: [
+      "React",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "Socket.io",
+      "Redis",
+      "Bull",
+      "JWT",
+      "Razorpay",
+      "TailwindCSS",
+      "shadCN",
+      "React Query",
+      "Quill",
+    ],
+    achievements: [
+      "Built real-time messaging system using Socket.io with channel-based event architecture.",
+      "Designed workspace and channel management with role-based admin controls.",
+      "Implemented JWT cookie-based authentication with email verification and password reset flow.",
+      "Integrated Razorpay subscription billing and gated premium AI text generation features.",
+      "Used Redis and Bull queue for background jobs including email handling.",
+      "Developed responsive UI with dark/light mode and rich-text editor support.",
+    ],
+    images: [billwardImg, billwardImg],
+    github: "https://github.com/ManikMaity/Message-Slack-Frontend",
+    liveUrl: "https://slackapp-rho.vercel.app/workspaces",
+    featured: true,
+  },
+  {
+    id: "socify",
+    title: "Socify – Full-Stack Social Media Platform",
+    description:
+      "A modern Instagram-inspired social media platform with posts, reels, real-time notifications, and infinite scrolling.",
+    longDescription:
+      "Built a full-stack social media application using Next.js and PostgreSQL with Prisma ORM. Users can create posts and reels, follow other users, like and comment on content, and receive real-time notifications. Implemented infinite scrolling for reels, optimized database queries for feed generation, and designed a responsive UI with dark/light mode support.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Clerk",
+      "TailwindCSS",
+      "shadCN",
+      "UploadThing",
+    ],
+    achievements: [
+      "Implemented authentication and user management using Clerk with protected routes.",
+      "Designed relational database schema using Prisma for users, posts, comments, followers, and notifications.",
+      "Built real-time notifications for likes, comments, and follows.",
+      "Implemented infinite scrolling reels with optimized pagination queries.",
+      "Developed fully responsive UI with dark/light mode support.",
+    ],
+    images: ["/imagess/projects/socify/socify.webp"],
+    github: "https://github.com/ManikMaity/socify",
+    liveUrl: "https://socify-green.vercel.app",
+    featured: true,
+  },
+
+  {
+    id: "coursify",
+    title: "Coursify – AI-Powered Course Marketplace",
+    description:
+      "A comprehensive course platform featuring Gemini AI integration for automated content generation and a robust admin/student ecosystem.",
+    longDescription:
+      "Coursify is a full-stack educational marketplace that streamlines the course creation process for admins while providing a seamless learning experience for students. The standout feature is its Gemini AI integration, which automatically generates course overviews, requirements, and metadata from YouTube playlists. It features a dual-authentication system, a custom video playback engine, and PWA support for mobile-first learning.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "Gemini AI",
+      "Tailwind CSS",
+      "DaisyUI",
+      "React Query",
+      "JWT",
+      "Zod",
+      "PWA",
+    ],
+    achievements: [
+      "Integrated Gemini AI to automate course metadata generation (titles, descriptions, requirements) from YouTube links.",
+      "Developed a dual-role authentication system using JWT and bcrypt for separate Student and Admin access.",
+      "Built a responsive course player with progress tracking and a dedicated 'My Courses' dashboard.",
+      "Implemented advanced search and filtering logic to sort courses by difficulty, duration, and keywords.",
+      "Configured PWA (Progressive Web App) capabilities for offline-ready access and mobile installability.",
+      "Designed a comprehensive Admin Suite for course CRUD operations and real-time listing management.",
+    ],
+    images: ["/imagess/projects/coursify/coursify.webp"],
+    github: "https://github.com/ManikMaity/Coursify",
+    liveUrl: "https://coursify-one.vercel.app/", // Assuming standard Vercel deployment based on your pattern
+    featured: false,
+  },
+
+  {
+    id: "giphy-clone",
+    title: "Giphy Clone – High-Performance GIF Engine",
+    description:
+      "A feature-rich Giphy replica built with React, focusing on high-performance media rendering, complex state management, and seamless Giphy SDK integration.",
+    longDescription:
+      "Developed a modern GIF search and discovery platform that mirrors the Giphy core experience. The application features a custom-built favorite system using Local Storage, complex filtering for GIFs vs. Stickers, and a robust routing system. To ensure performance with heavy media assets, I implemented React Lazy loading and Suspense for component-level code splitting, along with a custom Error Boundary for graceful failure handling.",
+    technologies: [
+      "React",
+      "React Router",
+      "React Query",
+      "Giphy SDK/API",
+      "Context API",
+      "Tailwind CSS",
+      "Lucide React",
+      "Local Storage",
+    ],
+    achievements: [
+      "Optimized media delivery by implementing Lazy Loading and React Suspense to reduce initial bundle size.",
+      "Engineered a persistent 'Favorites' system using Local Storage and Context API for global state management.",
+      "Integrated the Giphy API with advanced filtering for trending content, category-specific searches, and related GIF suggestions.",
+      "Built a complex search interface with real-time sorting by type (GIFs/Stickers), relevance, and recency.",
+      "Implemented a 'copy-to-clipboard' utility and uploader profile hovering for an enhanced social UX.",
+      "Ensured application stability using React Error Boundaries to catch and handle UI-level crashes.",
+    ],
+    images: ["/imagess/projects/giphy-clone/giphy-clone.webp"],
+    github: "https://github.com/ManikMaity/Giphy-Clone",
+    liveUrl: "https://giphy-clone-manik.vercel.app/", // Replace with your actual live URL if different
+    featured: false,
+  },
+
+  {
+    id: "livepoll",
+    title: "LivePoll – Real-Time Interactive Polling",
+    description:
+      "A dynamic polling platform featuring real-time vote updates, live data visualization with Chart.js, and secure JWT-based authentication.",
+    longDescription:
+      "LivePoll is an interactive full-stack application that enables users to create and participate in live polls with instant feedback. The core engine uses Socket.io to broadcast votes across all connected clients, updating live charts without requiring a page refresh. It includes a complete user dashboard for poll management, a bookmarking system, and a documented REST API with Swagger.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Socket.io",
+      "Chart.js",
+      "Zustand",
+      "React Query",
+      "JWT",
+      "Tailwind CSS",
+      "DaisyUI",
+      "Swagger",
+    ],
+    achievements: [
+      "Engineered real-time voting synchronization using Socket.io to ensure all users see live result updates instantly.",
+      "Integrated Chart.js (react-chartjs-2) to provide dynamic, visual representations of polling data as it changes.",
+      "Implemented secure, cookie-based JWT authentication with role-based access to user dashboards and poll creation.",
+      "Designed a paginated global feed to handle large volumes of polls while maintaining high performance.",
+      "Built a complete 'Bookmark' system allowing users to save and track specific polls within their profile.",
+      "Developed comprehensive API documentation using Swagger-jsdoc for easier backend testing and integration.",
+    ],
+    images: ["/imagess/projects/livepoll/livepoll.webp"],
+    github: "https://github.com/ManikMaity/LivePoll",
+    liveUrl: "https://live-poll-wine.vercel.app/",
+    featured: false,
+  },
+
+  {
+    id: "note-app",
+    title: "Note App – AI Voice & Rich Text Management",
+    description:
+      "A sophisticated note-taking application featuring voice-to-text transcription, TipTap rich text editing, and an Atomic Design frontend architecture.",
+    longDescription:
+      "Note App is a productivity-focused MERN stack application designed for high-efficiency capturing of thoughts. It stands out by integrating Web Speech API for voice-to-text notes and the TipTap editor for full-scale rich text manipulation. The project follows a strict 'Atomic Design' methodology, separating the UI into Atoms, Molecules, and Organisms to ensure maximum component reusability and scalability. It also features a custom hook-based architecture for streamlined API communication via React Query.",
+    technologies: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "TipTap",
+      "Zustand",
+      "Tailwind CSS",
+      "ShadCN",
+      "React Query",
+      "Zod",
+      "Web Speech API",
+    ],
+    achievements: [
+      "Implemented Atomic Design principles to build a highly modular and maintainable frontend component library.",
+      "Integrated voice-to-text functionality allowing users to capture notes hands-free with real-time transcription.",
+      "Developed a custom implementation of the TipTap editor, supporting rich text formatting and images uploads.",
+      "Architected a secure backend using modular routing, Zod validation, and JWT-based session management.",
+      "Optimized search performance with advanced filtering logic for titles, content, and favorite status.",
+      "Utilized custom React hooks to abstract complex logic, resulting in a clean and readable codebase.",
+    ],
+    images: ["/imagess/projects/note-app/note-app.webp"],
+    github: "https://github.com/ManikMaity/Note-App",
+    liveUrl: "https://note-app-manik.vercel.app/",
+    featured: false,
+  },
+
+  {
+    id: "second-brain",
+    title: "SecondBrain – Digital Knowledge Manager",
+    description:
+      "A MERN stack productivity tool for organizing links, tweets, and documents with unique shareable URLs and real-time content filtering.",
+    longDescription:
+      "SecondBrain is a personal organization system built with TypeScript and the MERN stack. It allows users to aggregate disparate digital content—such as YouTube videos, Twitter threads, and documents—into a single, searchable dashboard. The platform features a robust 'Brain Sharing' mechanism where users can generate a unique, cryptographically secure link to share their curated knowledge base with others, with the ability to toggle public access instantly.",
+    technologies: [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "Zustand",
+      "React Query",
+      "Tailwind CSS",
+      "JWT",
+      "Zod",
+    ],
+    achievements: [
+      "Built a secure content-sharing system allowing users to generate and revoke unique public access links for their 'brain'.",
+      "Implemented a dynamic sidebar filtering system to instantly categorize content by type (Video, Tweet, Link, Document).",
+      "Developed a TypeScript-first backend with Zod schema validation to ensure end-to-end type safety.",
+      "Integrated React Query for efficient server-state management and optimized data fetching of shared content.",
+      "Designed a clean, minimalist UI using Tailwind CSS focused on reducing cognitive load for information management.",
+      "Managed complex relational logic between users, tags, and content types using Mongoose and MongoDB.",
+    ],
+    images: ["/imagess/projects/second-brain/second-brain.webp"],
+    github: "https://github.com/ManikMaity/Second-Brain",
+    liveUrl: "https://second-brain-client.vercel.app/",
+    featured: false,
+  },
+];
