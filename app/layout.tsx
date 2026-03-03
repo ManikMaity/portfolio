@@ -1,56 +1,71 @@
-import type { Metadata } from "next";
 import { ClientLayout } from "./client-layout";
 import "./globals.css";
+import { Inter as FontSans } from "next/font/google";
+import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
+import { constructMetadata } from "@/lib/generateMetadata";
+import { siteConfig } from "@/data/metadata";
 
-export const metadata: Metadata = {
-  title: "Achyut Katiyar | Software Engineer",
-  description:
-    "Software Engineer building full-stack applications and decentralized systems. MS Computer Science at Northeastern University. Co-Chair of MIT Bitcoin Expo.",
-  metadataBase: new URL("https://achyutkatiyar.com"),
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
-  // Basic metadata
-  applicationName: "Achyut Katiyar Portfolio",
-  authors: [{ name: "Achyut Katiyar" }],
-  keywords: [
-    "Software Engineer",
-    "Full Stack Developer",
-    "Blockchain",
-    "Web3",
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Northeastern University",
-    "MIT Bitcoin Expo",
+const fontDisplay = localFont({
+  src: [
+    {
+      path: "../public/fonts/Satoshi-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
   ],
+  variable: "--font-display",
+});
 
-  openGraph: {
-    type: "website",
-    url: "https://achyutkatiyar.com",
-    title: "Achyut Katiyar | Software Engineer",
-    description:
-      "Software Engineer building full-stack applications and decentralized systems. MS CS at Northeastern. Co-Chair of MIT Bitcoin Expo.",
-    siteName: "Achyut Katiyar",
-    locale: "en_US",
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Achyut Katiyar - Portfolio",
-      },
-    ],
-  },
-
-  icons: {
-    icon: [{ url: "/favicon.ico" }, { url: "/icon.png", type: "image/png" }],
-    apple: { url: "/apple-touch-icon.png" },
-  },
-
-  alternates: {
-    canonical: "https://achyutkatiyar.com",
-  },
-};
+export const metadata = constructMetadata();
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <ClientLayout>{children}</ClientLayout>;
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,
+          fontDisplay.variable
+        )}
+      >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: siteConfig.name,
+              url: siteConfig.url,
+              jobTitle: siteConfig.jobTitle,
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: siteConfig.city,
+                addressCountry: siteConfig.country,
+              },
+              sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl],
+              knowsAbout: siteConfig.keywords,
+            }),
+          }}
+        />
+
+        <ClientLayout>{children}</ClientLayout>
+      </body>
+    </html>
+  );
 }
