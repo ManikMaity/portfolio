@@ -16,6 +16,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { NextImage } from "../shared/next-safe-image";
+import { FallbackImage } from "@/data/assets";
 
 interface ProjectCardProps {
   project: Project;
@@ -87,23 +88,37 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
 interface SnapCarouselProps {
   images: string[];
-  interval?: number; // ms per snap
+  interval?: number; // ms per slide
   className?: string;
+  fallbackImage?: string; // optional fallback
 }
 
-export function SnapCarousel({ images, interval = 3000, className = "" }: SnapCarouselProps) {
+export function SnapCarousel({
+  images,
+  interval = 3000,
+  className = "",
+  fallbackImage = FallbackImage,
+}: SnapCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
+  // Reset loaded when index changes
   useEffect(() => {
-    if (isPaused || images.length <= 1) return;
+    setLoaded(false);
+  }, [currentIndex]);
 
+  // Auto-slide only when not paused and image is loaded
+  useEffect(() => {
+    if (isPaused || images.length <= 1 || !loaded) return;
     const id = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, interval);
-
     return () => clearInterval(id);
-  }, [isPaused, images.length, interval]);
+  }, [isPaused, images.length, interval, loaded]);
+
+  // Handle previous/next manually
+  const goTo = (index: number) => setCurrentIndex(index % images.length);
 
   return (
     <div
@@ -111,35 +126,39 @@ export function SnapCarousel({ images, interval = 3000, className = "" }: SnapCa
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <AnimatePresence initial={false} mode="popLayout">
+      <AnimatePresence initial={false}>
         <motion.div
           key={currentIndex}
           initial={{ x: "100%" }}
-          animate={{ x: "0%" }}
+          animate={{ x: 0 }}
           exit={{ x: "-100%" }}
-          transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 },
-          }}
-          className="relative h-full w-full"
+          transition={{ x: { type: "tween", duration: 0.4 }, opacity: { duration: 0 } }}
+          className="absolute inset-0 h-full w-full"
         >
           <NextImage
-            src={images[currentIndex] ?? ""}
+            src={images[currentIndex] ?? fallbackImage}
             alt={`Slide ${currentIndex + 1}`}
             fill
-            className="object-cover object-top"
+            className="object-cover object-center"
             sizes="(max-width: 768px) 100vw, 33vw"
+            onLoadingComplete={() => setLoaded(true)}
+            onError={(e) => {
+              // fallback on error
+              (e.target as HTMLImageElement).src = fallbackImage;
+              setLoaded(true);
+            }}
           />
         </motion.div>
       </AnimatePresence>
 
-      {/* Optional: Indicator dots to make it look like a testimonial slider */}
+      {/* Indicator dots */}
       <div className="absolute bottom-2 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
         {images.map((_, i) => (
-          <div
+          <button
             key={i}
-            className={`h-1.5 rounded-full transition-all ${
-              i === currentIndex ? "w-4 bg-primary" : "w-1.5 bg-white/50"
+            onClick={() => goTo(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === currentIndex ? "w-4 bg-primary" : "w-1.5 bg-white/50 hover:bg-white"
             }`}
           />
         ))}

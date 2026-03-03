@@ -94,7 +94,7 @@ export const projects: Project[] = [
       Slack_SignUpImg,
     ],
     github: "https://github.com/ManikMaity/Message-Slack-Frontend",
-    liveUrl: "https://slackapp-rho.vercel.app/workspaces",
+    liveUrl: "https://slackapp-rho.vercel.app",
     featured: true,
   },
   {
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     ],
     images: [Soc_HomeImg, Soc_ProfileImg, Soc_ReelImg, Soc_NotificationImg, Soc_SearchImg],
     github: "https://github.com/ManikMaity/socify",
-    liveUrl: "https://socify-green.vercel.app",
+    liveUrl: "https://socify-green.vercel.app/",
     featured: true,
   },
 
@@ -170,7 +170,7 @@ export const projects: Project[] = [
       Cours_UserSigninImg,
     ],
     github: "https://github.com/ManikMaity/Coursify",
-    liveUrl: "https://coursify-one.vercel.app/", // Assuming standard Vercel deployment based on your pattern
+    liveUrl: "https://coursify-assignment-frontend.vercel.app/",
     featured: true,
   },
 
@@ -201,7 +201,7 @@ export const projects: Project[] = [
     ],
     images: [Giphy_1Img, Giphy_2Img, Giphy_3Img, Giphy_4Img, Giphy_5Img],
     github: "https://github.com/ManikMaity/Giphy-Clone",
-    liveUrl: "https://giphy-clone-manik.vercel.app/", // Replace with your actual live URL if different
+    liveUrl: "https://giphy-clone-mauve.vercel.app/",
     featured: false,
   },
 
@@ -248,39 +248,39 @@ export const projects: Project[] = [
     featured: true,
   },
 
-  {
-    id: "note-app",
-    title: "Note App – AI Voice & Rich Text Management",
-    description:
-      "A sophisticated note-taking application featuring voice-to-text transcription, TipTap rich text editing, and an Atomic Design frontend architecture.",
-    longDescription:
-      "Note App is a productivity-focused MERN stack application designed for high-efficiency capturing of thoughts. It stands out by integrating Web Speech API for voice-to-text notes and the TipTap editor for full-scale rich text manipulation. The project follows a strict 'Atomic Design' methodology, separating the UI into Atoms, Molecules, and Organisms to ensure maximum component reusability and scalability. It also features a custom hook-based architecture for streamlined API communication via React Query.",
-    technologies: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "Express",
-      "TipTap",
-      "Zustand",
-      "Tailwind CSS",
-      "ShadCN",
-      "React Query",
-      "Zod",
-      "Web Speech API",
-    ],
-    achievements: [
-      "Implemented Atomic Design principles to build a highly modular and maintainable frontend component library.",
-      "Integrated voice-to-text functionality allowing users to capture notes hands-free with real-time transcription.",
-      "Developed a custom implementation of the TipTap editor, supporting rich text formatting and images uploads.",
-      "Architected a secure backend using modular routing, Zod validation, and JWT-based session management.",
-      "Optimized search performance with advanced filtering logic for titles, content, and favorite status.",
-      "Utilized custom React hooks to abstract complex logic, resulting in a clean and readable codebase.",
-    ],
-    images: ["/imagess/projects/note-app/note-app.webp"],
-    github: "https://github.com/ManikMaity/Note-App",
-    liveUrl: "https://note-app-manik.vercel.app/",
-    featured: false,
-  },
+  // {
+  //   id: "note-app",
+  //   title: "Note App – AI Voice & Rich Text Management",
+  //   description:
+  //     "A sophisticated note-taking application featuring voice-to-text transcription, TipTap rich text editing, and an Atomic Design frontend architecture.",
+  //   longDescription:
+  //     "Note App is a productivity-focused MERN stack application designed for high-efficiency capturing of thoughts. It stands out by integrating Web Speech API for voice-to-text notes and the TipTap editor for full-scale rich text manipulation. The project follows a strict 'Atomic Design' methodology, separating the UI into Atoms, Molecules, and Organisms to ensure maximum component reusability and scalability. It also features a custom hook-based architecture for streamlined API communication via React Query.",
+  //   technologies: [
+  //     "React",
+  //     "Node.js",
+  //     "MongoDB",
+  //     "Express",
+  //     "TipTap",
+  //     "Zustand",
+  //     "Tailwind CSS",
+  //     "ShadCN",
+  //     "React Query",
+  //     "Zod",
+  //     "Web Speech API",
+  //   ],
+  //   achievements: [
+  //     "Implemented Atomic Design principles to build a highly modular and maintainable frontend component library.",
+  //     "Integrated voice-to-text functionality allowing users to capture notes hands-free with real-time transcription.",
+  //     "Developed a custom implementation of the TipTap editor, supporting rich text formatting and images uploads.",
+  //     "Architected a secure backend using modular routing, Zod validation, and JWT-based session management.",
+  //     "Optimized search performance with advanced filtering logic for titles, content, and favorite status.",
+  //     "Utilized custom React hooks to abstract complex logic, resulting in a clean and readable codebase.",
+  //   ],
+  //   images: ["/imagess/projects/note-app/note-app.webp"],
+  //   github: "https://github.com/ManikMaity/Note-App",
+  //   liveUrl: "https://note-app-manik.vercel.app/",
+  //   featured: false,
+  // },
 
   {
     id: "second-brain",

@@ -159,8 +159,7 @@ export function ProjectContent({ project }: ProjectContentProps) {
  */
 function ProjectImageGallery({ images, title }: { images: string[]; title: string }) {
   const [[page, direction], setPage] = useState([0, 0]);
-
-  const imageIndex = Math.abs(page % images.length);
+  const imageIndex = ((page % images.length) + images.length) % images.length;
 
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection]);
@@ -169,15 +168,13 @@ function ProjectImageGallery({ images, title }: { images: string[]; title: strin
   const variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? "100%" : "-100%",
-      opacity: 0,
+      opacity: 1,
     }),
     exit: (direction: number) => ({
-      zIndex: 0,
       x: direction < 0 ? "100%" : "-100%",
-      opacity: 0,
+      opacity: 1,
     }),
     center: {
-      zIndex: 1,
       x: 0,
       opacity: 1,
     },
@@ -185,7 +182,7 @@ function ProjectImageGallery({ images, title }: { images: string[]; title: strin
 
   return (
     <div className="group relative aspect-video w-full overflow-hidden rounded-xl border bg-black shadow-2xl">
-      <AnimatePresence initial={false} custom={direction} mode="popLayout">
+      <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={page}
           custom={direction}
@@ -194,10 +191,10 @@ function ProjectImageGallery({ images, title }: { images: string[]; title: strin
           animate="center"
           exit="exit"
           transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 },
+            x: { type: "tween", duration: 0.4 },
+            opacity: { duration: 0 },
           }}
-          className="relative h-full w-full"
+          className="absolute inset-0 h-full w-full"
         >
           <Image
             src={images[imageIndex] ?? ""}
@@ -209,9 +206,9 @@ function ProjectImageGallery({ images, title }: { images: string[]; title: strin
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Buttons - Only visible if more than 1 image */}
       {images.length > 1 && (
         <>
+          {/* Navigation Buttons */}
           <div className="absolute inset-x-4 top-1/2 z-10 flex -translate-y-1/2 justify-between opacity-0 transition-opacity group-hover:opacity-100">
             <Button
               variant="secondary"
@@ -231,7 +228,7 @@ function ProjectImageGallery({ images, title }: { images: string[]; title: strin
             </Button>
           </div>
 
-          {/* Dots/Indicators */}
+          {/* Dots */}
           <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2">
             {images.map((_, i) => (
               <button
