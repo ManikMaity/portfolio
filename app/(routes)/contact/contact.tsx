@@ -8,6 +8,7 @@ import { StarHeader } from "@/components/shared/star-header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { socialLinks } from "@/data/social";
 import { getIconComponent } from "@/lib/icons";
+import { ABOUT_CONTENT } from "@/data/about";
 
 export default function ContactPage() {
   return (
@@ -16,7 +17,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 py-12 md:px-6 md:py-24">
           <SectionHeader
             title="Get In Touch"
-            subtitle="Have a project in mind or want to collaborate? I'd love to hear from you!"
+            subtitle="Whether you have a question, want to collaborate, or just want to say hi, my inbox is always open!"
           />
         </div>
       </StarHeader>
@@ -79,7 +80,7 @@ export default function ContactPage() {
 
                 <div className="mt-auto pt-6">
                   <h3 className="mb-2 font-medium">Current Location</h3>
-                  <p className="text-sm text-muted-foreground">Boston, Massachusetts, USA</p>
+                  <p className="text-sm text-muted-foreground">{ABOUT_CONTENT.location}</p>
                 </div>
               </CardContent>
             </Card>

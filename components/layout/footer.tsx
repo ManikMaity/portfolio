@@ -7,6 +7,9 @@ import { Copyright, ExternalLink, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { socialLinks } from "@/data/social";
 import { getIconComponent } from "@/lib/icons";
+import { siteConfig } from "@/data/metadata";
+import { navItems } from "@/data/navigation";
+import { HERO_CONTENT } from "@/data/about";
 
 export function Footer() {
   return (
@@ -21,49 +24,35 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* About Section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold">Achyut Katiyar</h3>
-            <p className="max-w-xs text-sm text-muted-foreground">
-              Software Engineer based in Boston. MS Computer Science at Northeastern. Building
-              full-stack applications and decentralized systems.
-            </p>
+            <h3 className="text-lg font-bold">{siteConfig.name}</h3>
+            <p className="max-w-xs text-sm text-muted-foreground">{siteConfig.description}</p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/about"
-                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                >
-                  About Me
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/projects"
-                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                >
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                >
-                  Blog
-                </Link>
-              </li>
+              {navItems
+                .filter((item) => item.id !== "home" && item.id !== "contact")
+                .map((item) => (
+                  <li key={item.id}>
+                    <Link
+                      href={item.href}
+                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
               <li>
                 <a
-                  href="/resume.pdf"
+                  href={HERO_CONTENT.buttons.secondary.href}
+                  download={HERO_CONTENT.buttons.secondary.filename}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
-                  Resume <ExternalLink className="h-3 w-3" />
+                  {HERO_CONTENT.buttons.secondary.label} <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
             </ul>
@@ -105,12 +94,6 @@ export function Footer() {
                 </div>
                 <span>Search</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <div className="flex gap-1">
-                  <kbd className="rounded border bg-muted px-2 py-1 font-mono text-[10px]">T</kbd>
-                </div>
-                <span>Toggle theme</span>
-              </div>
             </div>
           </div>
         </div>
@@ -125,12 +108,14 @@ export function Footer() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center text-sm text-muted-foreground">
               <Copyright className="mr-1 h-3.5 w-3.5" />
-              <span>{new Date().getFullYear()} Achyut Katiyar. All rights reserved.</span>
+              <span>
+                {new Date().getFullYear()} {siteConfig.name} | All rights reserved
+              </span>
             </div>
             <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
               <span>Built with</span>
               <Heart className="h-3.5 w-3.5 fill-primary text-primary" />
-              <span>using Next.js & Tailwind</span>
+              <span>using Next.js</span>
             </div>
           </div>
         </motion.div>

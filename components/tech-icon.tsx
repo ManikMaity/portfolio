@@ -10,19 +10,40 @@ interface TechIconProps {
   className?: string;
 }
 
-// Icons that are pure black/dark and need inversion on dark backgrounds
-const darkLogoKeys = new Set(["nextjs", "express", "threejs", "flask", "github", "markdown"]);
+// Dark icons that need inversion on dark backgrounds
+const darkLogoKeys = new Set([
+  "nextjs",
+  "express",
+  "threejs",
+  "flask",
+  "github",
+  "markdown",
+  "tailwindcss",
+]);
+
+const customIcons: Record<string, string> = {
+  amazonwebservices: "https://devicon-website.vercel.app/api/amazonwebservices/original.svg",
+  "tanstack-table": "/icons/tanstack.webp",
+  "tanstack-router": "/icons/tanstack.webp",
+  "react-hook-form": "/icons/react-hook-form.webp",
+  "shadcn/ui": "/icons/shadcn-ui.webp",
+  daisyui: "/icons/daisy-ui.webp",
+  cypress: "/icons/cypress.webp",
+  hono: "/icons/hono.webp",
+};
 
 export function TechIcon({ logoKey, name, className = "h-5 w-5" }: TechIconProps) {
   const getIconUrl = () => {
+    if (customIcons[logoKey]) return customIcons[logoKey];
     if (logoKey === "nextjs")
       return "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg";
     if (logoKey === "tailwindcss")
-      return "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg";
+      return "https://devicon-website.vercel.app/api/tailwindcss/original-wordmark.svg";
     return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${logoKey}/${logoKey}-original.svg`;
   };
 
   const getFallbackUrl = () => {
+    if (customIcons[logoKey]) return customIcons[logoKey]; // fallback to same custom icon
     return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${logoKey}/${logoKey}-plain.svg`;
   };
 

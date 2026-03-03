@@ -12,10 +12,10 @@ import {
 } from "@/components/ui/card";
 import { type Project } from "@/data/projects";
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { NextImage } from "../shared/next-safe-image";
 
 interface ProjectCardProps {
   project: Project;
@@ -123,7 +123,7 @@ export function SnapCarousel({ images, interval = 3000, className = "" }: SnapCa
           }}
           className="relative h-full w-full"
         >
-          <Image
+          <NextImage
             src={images[currentIndex] ?? ""}
             alt={`Slide ${currentIndex + 1}`}
             fill

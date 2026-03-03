@@ -4,12 +4,12 @@ export const siteConfig = {
   jobTitle: "Full-Stack Developer",
   description:
     "Full-Stack Developer building scalable SaaS applications with Next.js, TypeScript, Node.js, and PostgreSQL. Focused on performance optimization, clean architecture, and production-ready systems.",
-  url: "https://yourdomain.com",
+  url: process.env.NEXT_DOMAIN || "https://yourdomain.com",
   ogImage: "/og-image.png",
   locale: "en_IN",
   twitterHandle: "@yourhandle",
-  githubUrl: "https://github.com/yourusername",
-  linkedinUrl: "https://linkedin.com/in/yourprofile",
+  githubUrl: "https://github.com/ManikMaity",
+  linkedinUrl: "https://www.linkedin.com/in/manikmaity",
   city: "Kolkata",
   country: "India",
 

@@ -1,25 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code2, GraduationCap, Trophy } from "lucide-react";
+import { ABOUT_CONTENT } from "@/data/about";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
-
-const stats = [
-  { label: "Experience", value: "Full-Stack & Web3", icon: Code2 },
-  { label: "Education", value: "MS CS @ NEU", icon: GraduationCap },
-  { label: "Awards", value: "$3,000+ Won", icon: Trophy },
-];
-
-const galleryImages = [
-  "/images/gallery/1.webp",
-  "/images/gallery/2.webp",
-  "/images/gallery/3.webp",
-  "/images/gallery/4.webp",
-];
+import { NextImage } from "../shared/next-safe-image";
 
 export function AboutSection() {
+  const { description, stats, galleryImages } = ABOUT_CONTENT;
+
   return (
     <section className="overflow-hidden py-6 md:py-12">
       <div className="container mx-auto px-4 md:px-6">
@@ -36,14 +26,10 @@ export function AboutSection() {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 Engineering with <span className="text-primary">Purpose</span>
               </h2>
-              <p className="max-w-150 text-muted-foreground md:text-lg/relaxed">
-                I specialize in bridging the gap between complex backend systems and intuitive
-                frontend experiences. Focus on clean code, blockchain scalability, and impactful
-                user solutions.
-              </p>
+              <p className="max-w-150 text-muted-foreground md:text-lg/relaxed">{description}</p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2">
               {stats.map((stat, i) => (
                 <div
                   key={i}
@@ -51,7 +37,7 @@ export function AboutSection() {
                 >
                   <stat.icon className="h-5 w-5 text-primary" />
                   <div className="space-y-0.5">
-                    <p className="text-sm leading-none font-bold">{stat.value}</p>
+                    <p className="text-sm leading-none font-semibold">{stat.value}</p>
                     <p className="text-xs text-muted-foreground">{stat.label}</p>
                   </div>
                 </div>
@@ -66,7 +52,7 @@ export function AboutSection() {
                 </Link>
               </Button>
               <Button asChild size="lg" className="group w-fit">
-                <Link href="/about">
+                <Link href="/experience">
                   Work History
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -74,8 +60,6 @@ export function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Right Side: Vertical Infinite Photo Grid */}
-          {/* Increased height and refined blending */}
           <div
             className="relative flex h-125 gap-4 overflow-hidden"
             style={{
@@ -88,9 +72,9 @@ export function AboutSection() {
           >
             <div className="flex w-full gap-4">
               {/* Column 1: Moving Down */}
-              <VerticalColumn images={galleryImages} speed={35} direction="down" />
+              <VerticalColumn images={galleryImages.group1} speed={20} direction="down" />
               {/* Column 2: Moving Up */}
-              <VerticalColumn images={[...galleryImages].reverse()} speed={40} direction="up" />
+              <VerticalColumn images={galleryImages.group2} speed={20} direction="up" />
             </div>
           </div>
         </div>
@@ -104,7 +88,7 @@ function VerticalColumn({
   speed,
   direction,
 }: {
-  images: string[];
+  images: { src: string; caption: string }[]; // Updated Type
   speed: number;
   direction: "up" | "down";
 }) {
@@ -121,19 +105,21 @@ function VerticalColumn({
           repeat: Infinity,
         }}
       >
-        {/* Triple the array to prevent any flickers on slower speeds or larger screens */}
-        {[...images, ...images, ...images].map((src, idx) => (
-          <div
-            key={idx}
-            className="relative aspect-4/5 w-full overflow-hidden rounded-2xl border border-border/50 bg-muted shadow-sm"
-          >
-            <Image
-              src={src}
-              alt="Gallery showcase"
-              fill
-              className="object-cover grayscale transition-all duration-700 hover:scale-105 hover:grayscale-0"
-              sizes="(max-width: 768px) 40vw, 25vw"
-            />
+        {[...images, ...images, ...images].map((item, idx) => (
+          <div key={idx} className="group/item flex flex-col gap-2">
+            <div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl border border-border/50 bg-muted shadow-sm">
+              <NextImage
+                src={item.src}
+                alt={item.caption}
+                fill
+                className="object-cover transition-all duration-700 group-hover/item:scale-105"
+                sizes="(max-width: 768px) 40vw, 25vw"
+              />
+            </div>
+            {/* Caption Element */}
+            <p className="px-2 text-center text-xs font-medium text-muted-foreground transition-colors group-hover/item:text-primary">
+              {item.caption}
+            </p>
           </div>
         ))}
       </motion.div>

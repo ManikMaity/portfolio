@@ -24,7 +24,7 @@ export const skills: Record<SkillCategory, Skill[]> = {
     { name: "Tanstack Table", category: "Languages & Frontend", logoKey: "tanstack-table" },
     { name: "Tanstack Router", category: "Concepts & Others", logoKey: "tanstack-router" },
     { name: "React Hook Form", category: "Concepts & Others", logoKey: "react-hook-form" },
-    { name: "shadcn/ui", category: "Concepts & Others", logoKey: "tailwindcss" },
+    { name: "shadcn/ui", category: "Concepts & Others", logoKey: "shadcn-ui" },
     { name: "DaisyUI", category: "Concepts & Others", logoKey: "daisyui" },
   ],
   "Backend & Database": [

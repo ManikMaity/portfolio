@@ -9,25 +9,25 @@ export const socialLinks: SocialLink[] = [
   {
     id: "github",
     name: "GitHub",
-    url: "https://github.com/achyut21",
+    url: "https://github.com/ManikMaity",
     icon: "github",
   },
   {
     id: "linkedin",
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/achyutkatiyar2103/",
+    url: "https://www.linkedin.com/in/manikmaity",
     icon: "linkedin",
   },
   {
     id: "email",
     name: "Email",
-    url: "mailto:achyutkatiyar21@gmail.com",
+    url: "mailto:manikmaity010@gmail.com",
     icon: "mail",
   },
   {
     id: "phone",
     name: "Phone",
-    url: "tel:+18575766733",
+    url: "tel:+919330685099",
     icon: "phone",
   },
 ];

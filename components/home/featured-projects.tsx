@@ -16,8 +16,8 @@ export function FeaturedProjects() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <HomeHeader
-            title="My Projects"
-            subtitle="A showcase of my work across various technologies"
+            title="Featured Projects"
+            subtitle="Some of my personal work, showcasing my skills and passion for building."
           />
           <div className="mt-4 grid w-full grid-cols-1 gap-6 text-left md:grid-cols-2 lg:grid-cols-3">
             {featuredProjects.map((project, index) => (

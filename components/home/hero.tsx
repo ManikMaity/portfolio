@@ -2,6 +2,7 @@
 
 import { StarHeader } from "@/components/shared/star-header";
 import { Button } from "@/components/ui/button";
+import { HERO_CONTENT } from "@/data/about";
 import { socialLinks } from "@/data/social";
 import { getIconComponent } from "@/lib/icons";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
@@ -9,30 +10,6 @@ import { ArrowRight, Download } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-// 1. Move all text to a central configuration object
-const HERO_CONTENT = {
-  badge: "Available for opportunities",
-  greeting: "Hi, I'm",
-  name: "Achyut",
-  skills: [
-    "Full Stack Developer",
-    "Web3 Engineer",
-    "Frontend Enthusiast",
-    "Backend Architect",
-    "Problem Solver",
-  ],
-  description: `Engineering high-performance full-stack applications and decentralized systems. 
-                Currently pursuing MS CS at Northeastern & Co-Chair at MIT Bitcoin Expo.`,
-  buttons: {
-    primary: { label: "View Projects", href: "/#projects" },
-    secondary: { label: "Resume", href: "/resume.pdf", filename: "Achyut_Katiyar_Resume.pdf" },
-  },
-  image: {
-    src: "/images/profile.webp",
-    alt: "Achyut Katiyar",
-  },
-};
 
 export function Hero() {
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
@@ -52,7 +29,6 @@ export function Hero() {
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-12 pb-12 md:py-32">
         <div className="relative z-10 container mx-auto px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            {/* Left Column: Text Content */}
             <motion.div
               className="flex flex-col items-center text-center lg:items-start lg:text-left"
               style={{ y: y1 }}

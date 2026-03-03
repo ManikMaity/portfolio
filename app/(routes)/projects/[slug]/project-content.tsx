@@ -1,23 +1,23 @@
 "use client";
 
-import { useState } from "react";
-import {
-  ArrowLeft,
-  Github,
-  ExternalLink,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { StarHeader } from "@/components/shared/star-header";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { type Project } from "@/data/projects";
-import { StarHeader } from "@/components/shared/star-header";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  Github,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 interface ProjectContentProps {
   project: Project;
@@ -168,7 +168,12 @@ function ProjectImageGallery({ images, title }: { images: string[]; title: strin
 
   const variants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? "100%" : "-100%",
       opacity: 0,
     }),
     center: {
@@ -176,11 +181,6 @@ function ProjectImageGallery({ images, title }: { images: string[]; title: strin
       x: 0,
       opacity: 1,
     },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
   };
 
   return (

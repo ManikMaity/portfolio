@@ -1,61 +1,18 @@
 "use client";
 
+import { timelineData } from "@/data/about";
 import { motion } from "framer-motion";
-import { Award, BookOpen, Code, Rocket, Terminal } from "lucide-react";
-
-const timelineData = [
-  {
-    year: "2021",
-    title: "The Spark",
-    description:
-      "Started my journey as a self-taught developer. Spent nights mastering HTML, CSS, and JavaScript through documentation and trial-and-error.",
-    icon: Terminal,
-    tags: ["Self-Taught", "Web Basics"],
-  },
-  {
-    year: "2022",
-    title: "Building Foundations",
-    description:
-      "Deep-dived into the React ecosystem and Node.js. Built my first full-stack applications and realized the power of scalable software.",
-    icon: Code,
-    tags: ["React", "Full-Stack", "Node.js"],
-  },
-  {
-    year: "2023",
-    title: "Web3 & Hackathons",
-    description:
-      "Entered the world of decentralized protocols. Started winning global hackathons and contributing to open-source blockchain projects.",
-    icon: Award,
-    tags: ["Solidity", "Blockchain", "Hackathons"],
-  },
-  {
-    year: "2024",
-    title: "Academic Excellence",
-    description:
-      "Began my MS in CS at Northeastern. Bridging self-taught practical skills with rigorous computer science theory.",
-    icon: BookOpen,
-    tags: ["MS CS", "Northeastern", "Algorithms"],
-  },
-  {
-    year: "Present",
-    title: "Shaping the Future",
-    description:
-      "Co-chairing the MIT Bitcoin Expo and TA-ing for CS2000. Engineering production-grade solutions for the next web.",
-    icon: Rocket,
-    tags: ["MIT Bitcoin Expo", "Teaching", "Scaling"],
-  },
-];
+import HomeHeader from "../shared/home-header";
 
 export function JourneySection() {
   return (
     <section className="bg-background py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tighter sm:text-5xl">My Evolution</h2>
-          <p className="mx-auto max-w-150 text-muted-foreground">
-            From writing my first line of code as a self-taught enthusiast to architecting complex
-            systems at the intersection of academia and industry.
-          </p>
+          <HomeHeader
+            title="My Journey"
+            subtitle="From writing my first line of code as a self-taught enthusiast to architecting complex systems at the intersection of academia and industry."
+          />
         </div>
 
         <div className="relative mx-auto max-w-4xl">
@@ -90,7 +47,7 @@ export function JourneySection() {
                       {item.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {item.tags.map((tag) => (
+                      {item?.tags?.map((tag) => (
                         <span
                           key={tag}
                           className="rounded-md bg-primary/10 px-2 py-1 text-[10px] font-semibold text-primary uppercase"

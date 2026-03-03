@@ -3,6 +3,8 @@
 import { ThreeDCard } from "@/components/3d-card";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { CommandPalette } from "@/components/ui/command-palette";
+import { HERO_CONTENT } from "@/data/about";
+import { siteConfig } from "@/data/metadata";
 import { navItems } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 import { motion, type Variants } from "framer-motion";
@@ -147,14 +149,14 @@ function MobileMenu({
                 {/* Resume download button */}
                 <div className="mt-2 border-t border-border/30 pt-2">
                   <a
-                    href="/resume.pdf"
-                    download="Achyut_Katiyar_Resume.pdf"
+                    href={HERO_CONTENT.buttons.secondary.href}
+                    download={HERO_CONTENT.buttons.secondary.filename}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={onClose}
                     className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-[15px] font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                   >
-                    Resume
+                    {HERO_CONTENT.buttons.secondary.label}
                   </a>
                 </div>
               </nav>
@@ -254,7 +256,7 @@ export function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
                   >
-                    Achyut Katiyar
+                    {siteConfig.name}
                   </motion.span>
                 </Link>
               </div>

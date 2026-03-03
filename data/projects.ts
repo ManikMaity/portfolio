@@ -1,4 +1,44 @@
-import { billwardImg } from "./assets";
+import {
+  Cours_AddCourseForm1Img,
+  Cours_AdminDashboardImg,
+  Cours_AdminRegisterImg,
+  Cours_CourseDetailsImg,
+  Cours_CourseVideosImg,
+  Cours_EditCourseImg,
+  Cours_HomeImg,
+  Cours_PurchasedCourseImg,
+  Cours_SearchImg,
+  Cours_UserSigninImg,
+  Giphy_1Img,
+  Giphy_2Img,
+  Giphy_3Img,
+  Giphy_4Img,
+  Giphy_5Img,
+  LP_BookmarkImg,
+  LP_CreatePollPageImg,
+  LP_DashboardImg,
+  LP_HomeImg,
+  LP_PollsPageImg,
+  LP_SignupImg,
+  LP_VotingPageImg,
+  SB_AddContentImg,
+  SB_HomeImg,
+  SB_SharedBrainPageImg,
+  SB_SigninImg,
+  SB_SignupImg,
+  Slack_ChannelImg,
+  Slack_MemberPageImg,
+  Slack_PaymentImg,
+  Slack_PrivateMessageImg,
+  Slack_SignInImg,
+  Slack_SignUpImg,
+  Slack_WorkspaceJoinImg,
+  Soc_HomeImg,
+  Soc_NotificationImg,
+  Soc_ProfileImg,
+  Soc_ReelImg,
+  Soc_SearchImg,
+} from "./assets";
 
 export interface Project {
   id: string;
@@ -15,8 +55,8 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "slack-clone",
-    title: "Slack Clone – Real-Time Collaboration Platform",
+    id: "slack",
+    title: "Slack – Real-Time Collaboration Platform",
     description:
       "A full-stack real-time collaboration platform with workspaces, channels, private messaging, subscriptions, and admin controls.",
     longDescription:
@@ -44,7 +84,15 @@ export const projects: Project[] = [
       "Used Redis and Bull queue for background jobs including email handling.",
       "Developed responsive UI with dark/light mode and rich-text editor support.",
     ],
-    images: [billwardImg, billwardImg],
+    images: [
+      Slack_ChannelImg,
+      Slack_PrivateMessageImg,
+      Slack_WorkspaceJoinImg,
+      Slack_MemberPageImg,
+      Slack_PaymentImg,
+      Slack_SignInImg,
+      Slack_SignUpImg,
+    ],
     github: "https://github.com/ManikMaity/Message-Slack-Frontend",
     liveUrl: "https://slackapp-rho.vercel.app/workspaces",
     featured: true,
@@ -74,7 +122,7 @@ export const projects: Project[] = [
       "Implemented infinite scrolling reels with optimized pagination queries.",
       "Developed fully responsive UI with dark/light mode support.",
     ],
-    images: ["/imagess/projects/socify/socify.webp"],
+    images: [Soc_HomeImg, Soc_ProfileImg, Soc_ReelImg, Soc_NotificationImg, Soc_SearchImg],
     github: "https://github.com/ManikMaity/socify",
     liveUrl: "https://socify-green.vercel.app",
     featured: true,
@@ -109,15 +157,26 @@ export const projects: Project[] = [
       "Configured PWA (Progressive Web App) capabilities for offline-ready access and mobile installability.",
       "Designed a comprehensive Admin Suite for course CRUD operations and real-time listing management.",
     ],
-    images: ["/imagess/projects/coursify/coursify.webp"],
+    images: [
+      Cours_HomeImg,
+      Cours_PurchasedCourseImg,
+      Cours_CourseDetailsImg,
+      Cours_SearchImg,
+      Cours_CourseVideosImg,
+      Cours_AdminDashboardImg,
+      Cours_AddCourseForm1Img,
+      Cours_EditCourseImg,
+      Cours_AdminRegisterImg,
+      Cours_UserSigninImg,
+    ],
     github: "https://github.com/ManikMaity/Coursify",
     liveUrl: "https://coursify-one.vercel.app/", // Assuming standard Vercel deployment based on your pattern
-    featured: false,
+    featured: true,
   },
 
   {
-    id: "giphy-clone",
-    title: "Giphy Clone – High-Performance GIF Engine",
+    id: "giphy",
+    title: "Giphy – High-Performance GIF Search Platform",
     description:
       "A feature-rich Giphy replica built with React, focusing on high-performance media rendering, complex state management, and seamless Giphy SDK integration.",
     longDescription:
@@ -140,7 +199,7 @@ export const projects: Project[] = [
       "Implemented a 'copy-to-clipboard' utility and uploader profile hovering for an enhanced social UX.",
       "Ensured application stability using React Error Boundaries to catch and handle UI-level crashes.",
     ],
-    images: ["/imagess/projects/giphy-clone/giphy-clone.webp"],
+    images: [Giphy_1Img, Giphy_2Img, Giphy_3Img, Giphy_4Img, Giphy_5Img],
     github: "https://github.com/ManikMaity/Giphy-Clone",
     liveUrl: "https://giphy-clone-manik.vercel.app/", // Replace with your actual live URL if different
     featured: false,
@@ -175,10 +234,18 @@ export const projects: Project[] = [
       "Built a complete 'Bookmark' system allowing users to save and track specific polls within their profile.",
       "Developed comprehensive API documentation using Swagger-jsdoc for easier backend testing and integration.",
     ],
-    images: ["/imagess/projects/livepoll/livepoll.webp"],
+    images: [
+      LP_HomeImg,
+      LP_PollsPageImg,
+      LP_DashboardImg,
+      LP_VotingPageImg,
+      LP_CreatePollPageImg,
+      LP_BookmarkImg,
+      LP_SignupImg,
+    ],
     github: "https://github.com/ManikMaity/LivePoll",
     liveUrl: "https://live-poll-wine.vercel.app/",
-    featured: false,
+    featured: true,
   },
 
   {
@@ -243,7 +310,7 @@ export const projects: Project[] = [
       "Designed a clean, minimalist UI using Tailwind CSS focused on reducing cognitive load for information management.",
       "Managed complex relational logic between users, tags, and content types using Mongoose and MongoDB.",
     ],
-    images: ["/imagess/projects/second-brain/second-brain.webp"],
+    images: [SB_HomeImg, SB_AddContentImg, SB_SharedBrainPageImg, SB_SigninImg, SB_SignupImg],
     github: "https://github.com/ManikMaity/Second-Brain",
     liveUrl: "https://second-brain-client.vercel.app/",
     featured: false,
