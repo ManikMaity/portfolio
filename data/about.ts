@@ -9,7 +9,11 @@ export const HERO_CONTENT = {
   description: `Full-stack developer with production experience in scalable SaaS architecture, API optimization, and performance-focused frontend systems.`,
   buttons: {
     primary: { label: "View Projects", href: "/#projects" },
-    secondary: { label: "Resume", href: "/resume.pdf", filename: "Manik_Maity_Resume.pdf" },
+    secondary: {
+      label: "Resume",
+      href: "https://drive.google.com/uc?export=download&id=1tTVokPxdTrWG2aN3xS_18p0FPmnakhiZ",
+      filename: "Manik_Maity_Resume.pdf",
+    },
   },
   image: {
     src: ManikProfileImg,

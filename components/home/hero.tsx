@@ -26,7 +26,7 @@ export function Hero() {
 
   return (
     <StarHeader>
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-12 pb-12 md:py-32">
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden md:py-32">
         <div className="relative z-10 container mx-auto px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <motion.div

@@ -16,7 +16,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
       <SmoothScrollProvider>
         <div className="relative flex min-h-screen flex-col">
           <Navbar />
-          <main className="flex-1 pt-16">{children}</main>
+          <main className="flex-1 md:pt-16">{children}</main>
           <Footer />
         </div>
         <FloatingSocials />
