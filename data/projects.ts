@@ -1,4 +1,9 @@
 import {
+  CG_CoinCompareImg,
+  CG_CoinPagePreviewImg,
+  CG_ComparePageImg,
+  CG_DesktopPreviewImg,
+  CG_SearchSuggestionFunctionalityImg,
   Cours_AddCourseForm1Img,
   Cours_AdminDashboardImg,
   Cours_AdminRegisterImg,
@@ -55,35 +60,39 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "slack",
-    title: "Slack – Real-Time Collaboration Platform",
-    description:
-      "A full-stack real-time collaboration platform with workspaces, channels, private messaging, subscriptions, and admin controls.",
-    longDescription:
-      "Built a production-style Slack-like application enabling teams to create workspaces, manage channels, and communicate in real time. Implemented role-based access control, subscription billing, AI-assisted messaging, and a scalable backend with WebSockets and Redis-backed job queues. Designed for performance, responsiveness, and clean system architecture.",
-    technologies: [
-      "React",
-      "Express",
-      "MongoDB",
-      "Mongoose",
-      "Socket.io",
-      "Redis",
-      "Bull",
-      "JWT",
-      "Razorpay",
-      "TailwindCSS",
-      "shadCN",
-      "React Query",
-      "Quill",
-    ],
-    achievements: [
-      "Built real-time messaging system using Socket.io with channel-based event architecture.",
-      "Designed workspace and channel management with role-based admin controls.",
-      "Implemented JWT cookie-based authentication with email verification and password reset flow.",
-      "Integrated Razorpay subscription billing and gated premium AI text generation features.",
-      "Used Redis and Bull queue for background jobs including email handling.",
-      "Developed responsive UI with dark/light mode and rich-text editor support.",
-    ],
+    id: "chattr",
+  title: "Chattr – Real-Time Slack-like Collaboration Platform",
+  description:
+    "A real-time Slack-like collaborative platform for creating and managing workspaces, channels, and private messaging, with advanced admin controls and responsive design.",
+  longDescription:
+    "Built a production-style real-time messaging application enabling teams to create workspaces, manage channels, and communicate instantly. Implemented role-based admin controls, JWT cookie-based authentication, subscription billing via Razorpay, AI-assisted message generation for subscribed users, and a scalable backend with WebSockets and Redis-backed Bull queues for background jobs. Designed with a responsive UI supporting dark/light mode and a rich-text editor.",
+  technologies: [
+    "React",
+    "Express",
+    "MongoDB",
+    "Mongoose",
+    "Socket.io",
+    "Redis",
+    "Bull",
+    "JWT",
+    "Firebase",
+    "Razorpay",
+    "Groq",
+    "TailwindCSS",
+    "shadCN",
+    "React Query",
+    "Quill",
+    "Zod",
+    "Nodemailer",
+  ],
+  achievements: [
+    "Built real-time messaging with Socket.io supporting channel-based updates, message reactions, deletion, and image uploads.",
+    "Designed workspace and channel management with role-based admin controls including member removal, promotion, and invite links.",
+    "Implemented JWT cookie-based authentication with email verification, password reset, and username update flows via Nodemailer.",
+    "Integrated Razorpay subscription billing and gated AI message generation (Groq) behind premium access.",
+    "Used Redis and Bull queue for scalable background job processing including email handling.",
+    "Developed responsive UI with dark/light mode support and a rich-text editor (Quill) with bold, italic, links, code, and bullets.",
+  ],
     images: [
       Slack_ChannelImg,
       Slack_PrivateMessageImg,
@@ -93,8 +102,8 @@ export const projects: Project[] = [
       Slack_SignInImg,
       Slack_SignUpImg,
     ],
-    github: "https://github.com/ManikMaity/Message-Slack-Frontend",
-    liveUrl: "https://slackapp-rho.vercel.app",
+     github: "https://github.com/ManikMaity/chattr-frontend",
+    liveUrl: "https://chattr.manikmaity.com/",
     featured: true,
   },
   {
@@ -171,7 +180,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/ManikMaity/Coursify",
     liveUrl: "https://coursify-assignment-frontend.vercel.app/",
-    featured: true,
+    featured: false,
   },
 
   {
@@ -244,44 +253,9 @@ export const projects: Project[] = [
       LP_SignupImg,
     ],
     github: "https://github.com/ManikMaity/LivePoll",
-    liveUrl: "https://live-poll-wine.vercel.app/",
+    liveUrl: "https://livepoll.manikmaity.com/",
     featured: true,
   },
-
-  // {
-  //   id: "note-app",
-  //   title: "Note App – AI Voice & Rich Text Management",
-  //   description:
-  //     "A sophisticated note-taking application featuring voice-to-text transcription, TipTap rich text editing, and an Atomic Design frontend architecture.",
-  //   longDescription:
-  //     "Note App is a productivity-focused MERN stack application designed for high-efficiency capturing of thoughts. It stands out by integrating Web Speech API for voice-to-text notes and the TipTap editor for full-scale rich text manipulation. The project follows a strict 'Atomic Design' methodology, separating the UI into Atoms, Molecules, and Organisms to ensure maximum component reusability and scalability. It also features a custom hook-based architecture for streamlined API communication via React Query.",
-  //   technologies: [
-  //     "React",
-  //     "Node.js",
-  //     "MongoDB",
-  //     "Express",
-  //     "TipTap",
-  //     "Zustand",
-  //     "Tailwind CSS",
-  //     "ShadCN",
-  //     "React Query",
-  //     "Zod",
-  //     "Web Speech API",
-  //   ],
-  //   achievements: [
-  //     "Implemented Atomic Design principles to build a highly modular and maintainable frontend component library.",
-  //     "Integrated voice-to-text functionality allowing users to capture notes hands-free with real-time transcription.",
-  //     "Developed a custom implementation of the TipTap editor, supporting rich text formatting and images uploads.",
-  //     "Architected a secure backend using modular routing, Zod validation, and JWT-based session management.",
-  //     "Optimized search performance with advanced filtering logic for titles, content, and favorite status.",
-  //     "Utilized custom React hooks to abstract complex logic, resulting in a clean and readable codebase.",
-  //   ],
-  //   images: ["/imagess/projects/note-app/note-app.webp"],
-  //   github: "https://github.com/ManikMaity/Note-App",
-  //   liveUrl: "https://note-app-manik.vercel.app/",
-  //   featured: false,
-  // },
-
   {
     id: "second-brain",
     title: "SecondBrain – Digital Knowledge Manager",
@@ -312,7 +286,42 @@ export const projects: Project[] = [
     ],
     images: [SB_HomeImg, SB_AddContentImg, SB_SharedBrainPageImg, SB_SigninImg, SB_SignupImg],
     github: "https://github.com/ManikMaity/Second-Brain",
-    liveUrl: "https://second-brain-client.vercel.app/",
+    liveUrl: "https://secondbrain.manikmaity.com/",
     featured: false,
   },
+  {
+  id: "crypto-tracker",
+  title: "Crypto Tracker – Real-Time Cryptocurrency Tracker",
+  description:
+    "A robust React.js app to monitor real-time cryptocurrency data including prices, market caps, and trends using the CoinGecko API.",
+  longDescription:
+    "Built a feature-rich cryptocurrency tracking application that provides real-time data on prices, market caps, and historical trends. Implemented infinite scroll, interactive Chart.js visualizations across multiple timeframes, a coin comparison feature, and a debounced search with suggestions. Followed the presenter-container pattern with custom hooks for clean architecture, and optimized performance using lazy loading, suspense, and error boundaries.",
+  technologies: [
+    "React",
+    "DaisyUI",
+    "Zustand",
+    "React Query",
+    "Chart.js",
+    "CoinGecko API",
+  ],
+  achievements: [
+    "Integrated CoinGecko API with React Query caching to display real-time prices, market caps, and 24h changes for a large list of cryptocurrencies.",
+    "Built interactive Chart.js charts showing price, market cap, and volume data across 24-hour, 30-day, and 1-year timeframes.",
+    "Implemented infinite scroll for browsing an extensive cryptocurrency list and a debounced search box with live suggestions.",
+    "Developed a coin comparison feature allowing users to select and compare two cryptocurrencies side by side.",
+    "Managed global state with Zustand and followed the presenter-container pattern with custom hooks for reusable, maintainable logic.",
+    "Optimized performance using lazy loading, React Suspense, and error boundaries; added dark/light mode and INR/USD currency toggling.",
+  ],
+  images: [
+    CG_CoinCompareImg,
+    CG_CoinPagePreviewImg,
+    CG_ComparePageImg,
+    CG_DesktopPreviewImg,
+    CG_SearchSuggestionFunctionalityImg,
+
+  ],
+  github: "https://github.com/ManikMaity/Crypto-Project---CoinGecko",
+  liveUrl: "https://crypto-project-coin-gecko-topaz.vercel.app",
+  featured: false,
+},
 ];
